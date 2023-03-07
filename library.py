@@ -15,3 +15,13 @@ def analisis_data_na(data,col, var_dependen):
     plt.title(col)
     plt.tight_layout()
     plt.show()
+
+def analisis_data_tahun(data,col, var_pembanding, var_dependen,y_label):
+    data = data.copy()
+    #melihat selisih antara kolom tahun dengan Yr sold
+    data[col] = data[var_pembanding] - data[col]
+    plt.scatter(data[col],data[var_dependen])
+    plt.ylabel(y_label)
+    plt.xlabel(col)
+    plt.tight_layout()
+    plt.show()

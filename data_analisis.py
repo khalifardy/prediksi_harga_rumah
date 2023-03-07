@@ -26,7 +26,7 @@ var_na  = dataku[kolom_na]
 var_na.isnull().mean() *100
 # %%
 # membuat visualisasi untuk semua variabel yang memiliki data kosong
-from library import analisis_data_na
+from library import analisis_data_na,analisis_data_tahun
 batas = len(kolom_na)
 i = 1
 
@@ -62,4 +62,15 @@ dataku.groupby("YrSold")["SalePrice"].median().plot()
 plt.ylabel("Nilai Median Harga Jual Rumah")
 plt.xlabel("Perubahan Harga Per Tahun")
 plt.tight_layout()
+# %%
+
+batas = len(kolom_tahun)
+i = 1
+for kolom in kolom_tahun:
+    if kolom != 'YrSold':
+        i += 1
+        analisis_data_tahun(dataku,kolom,"YrSold","SalePrice","Harga Jual Rumah")
+        if i < batas: plt.figure()
+    
+#
 # %%
