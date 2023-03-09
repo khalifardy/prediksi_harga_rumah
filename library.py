@@ -82,3 +82,9 @@ def analisis_outlier(data,col):
         plt.ylabel(col)
         plt.tight_layout()
         plt.show()
+
+# Pengecekan variabel kategori yang jarang
+def analisis_var_jarang(data, col, presentase,var_dependen):
+    data = data.copy()
+    isi = data.groupby(col)[var_dependen].count() /len(data)
+    return isi [isi < presentase]

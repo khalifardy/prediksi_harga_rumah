@@ -144,3 +144,28 @@ for kolom in kolom_kontinu_log:
     analisis_outlier(dataku,kolom)
     if i <= batas: plt.figure()
 # %%
+#Variabel Kategori (nominal)
+kolom_kategori =[
+    kolom for kolom in  dataku.columns
+    if dataku[kolom].dtype == 'O'
+]
+kategori = dataku[kolom_kategori]
+# %%
+#Mengecek item setiap kolom kategori
+from library import analisis_var_jarang
+kategori.nunique()
+
+for kolom in kolom_kategori:
+    print(analisis_var_jarang(dataku, kolom,0.01, "SalePrice"),'\n')
+
+
+
+# %%
+#VISUALISASI kolom kategori
+i = 1
+batas = len(kolom_kategori)
+for  kolom in kolom_kategori:
+    i+= 1
+    analisis_data_diskrit(dataku,kolom,"SalePrice","Median Harga Jual")
+    if i  <= batas: plt.figure()
+# %%
